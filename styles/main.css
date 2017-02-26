@@ -31,3 +31,20 @@
 .task-row:hover .remove {
     display: inline;    
 }
+
+.task-row.completed {    
+    color: #ddd;
+}
+.task-row.completed label {
+    text-decoration: line-through;
+}
+
+#newTask {
+    position: relative;
+}
+#newTask .error-message {
+    position: absolute;
+    top: 35px;
+    left: 0;
+    color: red;
+}

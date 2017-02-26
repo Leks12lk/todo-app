@@ -25,16 +25,16 @@
         <div class="container-fluid">
             <div class="navbar-header text-center">
                 <a class="navbar-brand" href="#">ToDo</a>
-            </div>     
+            </div>
         </div>
     </nav>
     <div class="container">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="New task...">
+                <div class="input-group" id="newTask">
+                    <input type="text" id="task" class="form-control" placeholder="New task...">
                     <div class="input-group-btn">
-                        <button class="btn btn-success" type="button">Save</button>
+                        <button id="save-btn" class="btn btn-success" type="button">Save</button>
                     </div>
                 </div>
             </div>
@@ -42,17 +42,26 @@
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2">
                 <div class="panel panel-default mt40">
-                    <div class="panel-body">
+                    <div class="panel-body" id="tasks-container">
                         <div class="checkbox task-row">
-                            <label><input type="checkbox" value="">Learn HTML</label>
+                            <label>
+                                <input type="checkbox" value="" class="done-checkbox">
+                                Learn HTML
+                            </label>
                             <i class="fa fa-times remove pull-right" aria-hidden="true"></i>
                         </div>
                         <div class="checkbox task-row">
-                            <label><input type="checkbox" value="">Learn jQuery</label>
+                            <label>
+                                <input type="checkbox" value="" class="done-checkbox">
+                                Learn jQuery
+                            </label>
                             <i class="fa fa-times remove pull-right" aria-hidden="true"></i>
                         </div>
                         <div class="checkbox task-row">
-                            <label><input type="checkbox" value="">Meet with Angular</label>
+                            <label>
+                                <input type="checkbox" value="" class="done-checkbox">
+                                Meet with Angular
+                            </label>
                             <i class="fa fa-times remove pull-right" aria-hidden="true"></i>
                         </div>
                     </div>
