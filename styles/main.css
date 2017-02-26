@@ -1,2 +1,33 @@
-﻿body {
+﻿.navbar{
+    margin-bottom: 40px;
+}
+
+.navbar-header {
+    float: none;
+}
+.navbar-brand {
+    float: none;
+    display: inline-block;
+}
+
+.mt40 {
+    margin-top: 40px;
+}
+
+.task-row {
+    /*min-height: 40px;*/
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+.task-row:last-child {
+     border-bottom: none;
+}
+.task-row .remove {
+    display: none;
+    color: red;
+    transition: .7;
+    cursor: pointer;
+}
+.task-row:hover .remove {
+    display: inline;    
 }
