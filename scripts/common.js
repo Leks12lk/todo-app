@@ -1,41 +1,44 @@
 ﻿
-$(document).on('click', '.done-checkbox', function () {
+// get tasks from server
+taskService.getTasks();
+
+$('#tasks-container').on('click', '.done-checkbox', function () {
     $(this).parents('.task-row').toggleClass('completed');
 });
 
-$(document).on('click', '.remove', function () {
+$('#tasks-container').on('click', '.remove', function () {
     $(this).parents('.task-row').remove();
 });
+
+$('#save-btn').click(function () {
+    var container = $('#tasks-container');
+    var title = $('#task').val();    
+    if (title.trim() != '') {
+        console.log(title);
+        var element = buildTask(title);
+        container.append(element);
+        $('#task').val('');
+    } else {
+        showErrorMessage('Please enter a task title');
+    }
+   
+})
 
 $('#task').keydown(function () {
     $('.error-message').remove();
 })
 
-$('#save-btn').click(function () {    
-    var title = $('#task').val();
-    var container = $('#tasks-container');
-    if (title.trim() != '') {
-        var element = buildTask(title);
-        container.append(element);
-        $('#task').val('');
-       
-    } else {
-        showErrorMessage('Please enter the task title');
-    }
-
-})
-
 function buildTask(task) {
-    var el = '<div class="checkbox task-row"><label><input type="checkbox" value="" class="done-checkbox">'+task+'</label>'
+    var el = '<div class="checkbox task-row '+ (task.isDone ? 'completed' : '') + '"><label><input type="checkbox" value="" class="done-checkbox">' + task.title + '</label>';
     el += '<i class="fa fa-times remove pull-right" aria-hidden="true"></i></div>';
-    
-    return el;                            
+
+    return el;
 }
 
 function showErrorMessage(message) {
-    var container = $('#newTask input');
+    var input = $('#newTask input');
     var el = $('<p></p>');
     el.addClass('error-message');
     el.text(message);
-    container.after(el);
+    input.after(el);
 }
