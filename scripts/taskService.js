@@ -6,11 +6,10 @@
             $.ajax({
                 url: self.baseUrl,
                 type: 'GET',
-                success: function (response) { // response is an array of objects                   
+                success: function (response) { // response - an array of objects                   
                     console.log('Success', response);
                     for (var i = 0; i < response.length; i++) {
-                        var element = buildTask(response[i]);
-                        $('#tasks-container').append(element);                                             
+                        buildTask(response[i]);                                                                
                     }
                     $('.task-row.completed').find('.done-checkbox').prop('checked', true);
                 },
@@ -19,50 +18,33 @@
                 }
             })
         },
-        addTask: function (task) {            
-            var self = this;            
+        addTask: function (task) {
+            var self = this;
             $.ajax({
                 url: self.baseUrl,
                 type: 'POST',
                 data: task,
-                success: function (response) {                    
-                    console.log('success', response);
-                    var element = buildTask(response);
-                    $('#tasks-container').append(element);
+                success: function (response) {  // response - just added task
+                    console.log('Success', response);
+                    buildTask(response);                   
                 },
                 error: function (response) {
-                    console.log('error');
+                    console.log('Error', response);
                 }
             })
         },
-        deleteTask: function (taskId) {
-            console.log('taskId', taskId);
+        deleteTask: function (taskId) {         
             var self = this;
             $.ajax({
                 url: self.baseUrl + '/' + taskId,
-                type: 'DELETE',               
-                success: function (response) {
-                    console.log('success', response);
+                type: 'DELETE',
+                success: function (response) {  // response - status code only
+                    console.log('Success', response);
                 },
-                error: function (response) {
-                    console.log('error', response);
+                error: function (response) {                    
+                    console.log('Error', response);
                 }
             })
-        },
-        updateTask: function (task) {
-            console.log('task', task);
-            var self = this;
-            $.ajax({
-                url: self.baseUrl,
-                type: 'PUT',
-                data: task,
-                success: function (response) {
-                    console.log('success', response);
-                },
-                error: function (response) {
-                    console.log('error', response);
-                }
-            })            
         }
     }
 })();
