@@ -45,6 +45,21 @@
                     console.log('Error', response);
                 }
             })
+        },
+        updateTask: function (task) {
+            console.log(task);
+            var self = this;
+            $.ajax({
+                url: self.baseUrl,
+                type: 'PUT',
+                data: task,
+                success: function (response) {
+                    console.log('success', response);
+                },
+                error: function (response) {
+                    console.log('error', response);
+                }
+            })
         }
     }
 })();

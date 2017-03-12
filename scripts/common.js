@@ -5,13 +5,14 @@ taskService.getTasks();
 $('#tasks-container').on('click', '.done-checkbox', function () {
     var taskRow = $(this).parents('.task-row');
     taskRow.toggleClass('completed');
+    // object to pass to server
     var task = {
         id: taskRow.data('taskid'),
-        title: taskRow.find('label').text(),
+        title: taskRow.find('span').text(),
         isDone: $(this).prop('checked')
     };
     
-    //taskService.updateTask(task);
+    taskService.updateTask(task);
 });
 
 $('#tasks-container').on('click', '.remove', function () {
@@ -61,7 +62,7 @@ function buildTask(task) {
 
     // element which will be appended to the tasks container
     var el = '<div class="checkbox task-row'+ (task.isDone ? ' completed' : '') +'" data-taskid='+ task.id +'>';
-    el += '<label><input type="checkbox" value="" class="done-checkbox">' + task.title + '</label>';
+    el += '<label><input type="checkbox" value="" class="done-checkbox"><span>' + task.title + '</span></label>';
     el += '<i class="fa fa-times remove pull-right" aria-hidden="true"></i></div>';
 
     // append just created element to the tasks container
