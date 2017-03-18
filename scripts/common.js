@@ -5,13 +5,14 @@ taskService.getTasks();
 $('#tasks-container').on('click', '.done-checkbox', function () {
     var taskRow = $(this).parents('.task-row');
     taskRow.toggleClass('completed');
+
     // object to pass to server
     var task = {
         id: taskRow.data('taskid'),
         title: taskRow.find('span').text(),
         isDone: $(this).prop('checked')
     };
-    
+
     taskService.updateTask(task);
 });
 
@@ -20,15 +21,17 @@ $('#tasks-container').on('click', '.remove', function () {
     var taskId = $(this).parents('.task-row').data('taskid');
 
     // remove .task-row from DOM
-    $(this).parents('.task-row').remove();  
-    
+    $(this).parents('.task-row').remove();
+
     // if id of a task is not undefined call the service deleteTask method
     if (taskId != undefined) {
         taskService.deleteTask(taskId);
-    }   
+    }
 });
 
-$('#save-btn').click(function () {
+$('#newTaskForm').submit(function (event) {
+    // prevent default behaviou
+    event.preventDefault();
     // get input value
     var title = $('#task').val();
 
@@ -36,7 +39,7 @@ $('#save-btn').click(function () {
     if (title.trim() != '') {
         var task = {
             title: title
-        };             
+        };
 
         taskService.addTask(task);
 
@@ -45,8 +48,8 @@ $('#save-btn').click(function () {
     } else {
         showErrorMessage('Please enter a task title');
     }
-   
 })
+
 
 $('#task').keydown(function () {
     $('.error-message').remove();
@@ -61,7 +64,7 @@ function buildTask(task) {
     var container = $('#tasks-container');
 
     // element which will be appended to the tasks container
-    var el = '<div class="checkbox task-row'+ (task.isDone ? ' completed' : '') +'" data-taskid='+ task.id +'>';
+    var el = '<div class="checkbox task-row' + (task.isDone ? ' completed' : '') + '" data-taskid=' + task.id + '>';
     el += '<label><input type="checkbox" value="" class="done-checkbox"><span>' + task.title + '</span></label>';
     el += '<i class="fa fa-times remove pull-right" aria-hidden="true"></i></div>';
 
@@ -76,3 +79,21 @@ function showErrorMessage(message) {
     el.text(message);
     input.after(el);
 }
+
+function showErrorAlert(text) {
+    var errorText = text || "Error during the process";
+
+    var alert = '<div class="alert alert-danger error-alert">';
+    alert += '<span href="#" class="close" aria-label="close" onclick="closeErrorAlert()">&times;</span> ' + errorText + '</div>';
+    var div = document.createElement('div');
+    $(div).addClass('blocked');
+    $('body').append(div);
+    $('body').append(alert);
+}
+
+function closeErrorAlert() {
+    $('.error-alert').remove();
+    $('.blocked').remove();
+}
+
+

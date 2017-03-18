@@ -2,11 +2,11 @@
     return {
         baseUrl: 'http://learn-todo.gear.host/api/tasks',        
         getTasks: function () {
-            var self = this;           
+            var self = this;          
             $.ajax({
                 url: self.baseUrl,
                 type: 'GET',
-                success: function (response) { // response - an array of objects                   
+                success: function (response) { // response - an array of objects                  
                     console.log('Success', response);
                     for (var i = 0; i < response.length; i++) {
                         buildTask(response[i]);                                                                
@@ -15,6 +15,7 @@
                 },
                 error: function (response) {
                     console.log('Error', response);
+                    showErrorAlert("Data cannot be received");
                 }
             })
         },
@@ -30,6 +31,7 @@
                 },
                 error: function (response) {
                     console.log('Error', response);
+                    showErrorAlert();
                 }
             })
         },
@@ -43,6 +45,7 @@
                 },
                 error: function (response) {                    
                     console.log('Error', response);
+                    showErrorAlert();
                 }
             })
         },
@@ -54,12 +57,15 @@
                 type: 'PUT',
                 data: task,
                 success: function (response) {
-                    console.log('success', response);
+                    console.log('success', response);                    
                 },
                 error: function (response) {
                     console.log('error', response);
+                    showErrorAlert();
                 }
             })
         }
     }
 })();
+
+
