@@ -1,5 +1,5 @@
 ﻿
-
+debugger;
 // get tasks from server
 taskService.getTasks();
 

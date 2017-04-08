@@ -7,24 +7,30 @@
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				data: 'grant_type=password&username=' + email + '&password=' + pass,
 				success: function (data) {
+				    debugger;
 					console.log('success', data);
 
 					var token = data.access_token;
 					var userName = data.userName;
 
-					if (token.trim() != '') {
+					if (token && token.trim() != '') {
 						localStorage.setItem('token', token);
 						localStorage.setItem('userName', userName);
 
 
 						config.token = token;
+						config.headers = {
+						    'Authorization': 'Bearer ' + config.token
+						}
 						config.userName = userName;
 						config.isAuthorize = true;
 						mainCtrl.changeNavbar();
 
-						setTimeout(function() {
-							routeProvider.getTasksPage();
-						}, 1000);
+						
+						routeProvider.getTasksPage();
+					    // get tasks from server
+						//taskService.getTasks();
+						
 						
 					}
 
