@@ -1,0 +1,24 @@
+﻿
+<div class="row">
+	<div class="col-sm-8 col-sm-offset-2">
+		<form id="newTaskForm" onsubmit="tasksCtrl.addTask(event)">
+			<div class="input-group" id="newTask">
+				<input type="text" id="task" class="form-control" placeholder="New task..." onkeydown="tasksCtrl.removeErrorMessage()">
+				<div class="input-group-btn">
+					<button id="save-btn" class="btn btn-success" type="submit">Save</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-8 col-sm-offset-2">
+		<div class="panel panel-default mt40">
+			<div class="panel-body" id="tasks-container">
+				<!-- here will be list of tasks -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="scripts/controllers/tasksCtrl.js"></script>
