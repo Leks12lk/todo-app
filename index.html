@@ -12,7 +12,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <link href="styles/main.css" rel="stylesheet" />
 
-
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,67 +25,28 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header text-center">
-                <a class="navbar-brand" href="#">ToDo</a>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <form id="newTaskForm">
-                    <div class="input-group" id="newTask">
-                        <input type="text" id="task" class="form-control" placeholder="New task...">
-                        <div class="input-group-btn">
-                            <button id="save-btn" class="btn btn-success" type="submit">Save</button>
-                        </div>
-                    </div>
-                </form>               
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2">
-                <div class="panel panel-default mt40">
-                    <div class="panel-body" id="tasks-container">
-                        <!--<div class="checkbox task-row" data-taskid="1">
-                                <label>
-                                    <input type="checkbox" value="" class="done-checkbox">
-                                    Learn HTML
-                                </label>
-                                <i class="fa fa-times remove pull-right" aria-hidden="true"></i>
-                            </div>
-                            <div class="checkbox task-row" data-taskid="2">
-                                <label>
-                                    <input type="checkbox" value="" class="done-checkbox">
-                                    Learn jQuery
-                                </label>
-                                <i class="fa fa-times remove pull-right" aria-hidden="true"></i>
-                            </div>
-                            <div class="checkbox task-row" data-taskid="3">
-                                <label>
-                                    <input type="checkbox" value="" class="done-checkbox">
-                                    Meet with Angular
-                                </label>
-                                <i class="fa fa-times remove pull-right" aria-hidden="true"></i>
-                            </div>
-                        </div>-->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<body>    
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header text-center">
+				<a class="navbar-brand" href="#">ToDo</a>
+			</div>
+			<ul class="nav navbar-nav navbar-right change-nav">
+				<li><a href="javascript: routeProvider.getPage('register');"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="javascript: routeProvider.getPage('login');"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container" id="main">
+		<!-- Here will be included partial view -->
+	</div>
 
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="scripts/taskService.js"></script>
-    <script src="scripts/common.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/authService.js"></script>
+    <script src="scripts/services/taskService.js"></script>
+    <script src="scripts/controllers/mainCtrl.js"></script>
+    <script src="scripts/controllers/authCtrl.js"></script>
+	
 </body>
 </html>
 
