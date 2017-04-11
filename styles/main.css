@@ -1,4 +1,8 @@
-﻿.navbar{
+﻿body {
+	background-color: #eee;
+}
+
+.navbar{
     margin-bottom: 40px;
 }
 
@@ -66,8 +70,26 @@
     z-index: 3000;
 }
 
-
-#login h1,
-#register h1 {
-	margin-bottom: 30px;
+#login,
+#register {
+	margin-top: 50px;
 }
+
+#login h3,
+#register h3 {
+	margin: 10px 0 10px;
+}
+
+.card-signup .header {
+	padding: 5px 0;
+}
+
+.card-signup .content {
+    padding: 20px 30px 0px 10px;
+}
+
+#login .input-group,
+#register .input-group {
+	padding: 10px 0;
+}
+

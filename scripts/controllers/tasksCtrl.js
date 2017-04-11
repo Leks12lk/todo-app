@@ -3,18 +3,19 @@
         getTasks: function () {
             var self = this;
             // get tasks from server
-            taskService.getTasks()
-                .done(function (response) {                    
-                    console.log('Success', response);
-                    for (var i = 0; i < response.length; i++) {
-                        tasksCtrl.buildTask(response[i]);
-                    }
-                    $('.task-row.completed').find('.done-checkbox').prop('checked', true);
-                })
-                .fail(function (response) {
-                    console.log('Error', response);
-                    self.showErrorAlert("Data cannot be received");
-                })
+	        taskService.getTasks()
+		        .done(function(response) {
+			        console.log('Success', response);
+			        for (var i = 0; i < response.length; i++) {
+				        tasksCtrl.buildTask(response[i]);
+			        }
+			        $('.task-row.completed').find('.done-checkbox').prop('checked', true);
+			        $('.task-row.completed').find('.done-checkbox').attr('checked');
+		        })
+		        .fail(function(response) {
+			        console.log('Error', response);
+			        self.showErrorAlert("Data cannot be received");
+		        });
         },
 
         addTask: function (event) {
@@ -32,8 +33,8 @@
 
                 taskService.addTask(task)
                     .done(function (response) {
-                        console.log('Success', response);
-                        self.buildTask(response);
+                    	console.log('Success', response);
+                    	self.buildTask(response);
                     })
                     .fail(function (response) {
                         console.log('Error', response);
@@ -96,6 +97,7 @@
          * input parameter: object task
          */
         buildTask: function (task) {
+        	
             // tasks container
             var container = $('#tasks-container');
 
@@ -103,9 +105,10 @@
             var el = '<div class="checkbox task-row' + (task.isDone ? ' completed' : '') + '" data-taskid=' + task.id + '>';
             el += '<label><input type="checkbox" value="" class="done-checkbox" onclick="tasksCtrl.updateTask(this);"><span>' + task.title + '</span></label>';
             el += '<i class="fa fa-times remove pull-right" aria-hidden="true" onclick="tasksCtrl.deleteTask(this);"></i></div>';
-
             // append just created element to the tasks container
             container.append(el);
+			// init material lib
+            $.material.init();
         },
 
         showErrorMessage: function (message) {
