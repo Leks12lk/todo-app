@@ -6,6 +6,7 @@ config.headers = {
 	'Authorization': 'Bearer ' + config.token
 }
 config.baseUrl = 'http://learn-todo.gear.host/api/tasks';
+config.registerUrl = 'http://learn-todo.gear.host/api/account/register';
 config.tokenUrl = 'http://learn-todo.gear.host/token';
 config.logoutUrl = 'http://learn-todo.gear.host/api/account/logout';
 config.isAuthorized = false;

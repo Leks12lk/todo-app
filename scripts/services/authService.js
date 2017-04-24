@@ -10,7 +10,22 @@
             
 		    return ajax;
 		},
+		register: function (email, pass, confirmPass) {
 
+			var objToSend = {
+				email: email,
+				password: pass,
+				confirmPassword: confirmPass
+			}
+
+			var ajax = $.ajax({
+				url: config.registerUrl,
+				type: 'POST',
+				data: objToSend
+			});
+
+			return ajax;
+		},
 		logout: function () {
 		    $.ajax({
 		        url: config.logoutUrl,
