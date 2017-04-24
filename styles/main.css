@@ -26,13 +26,14 @@
      border-bottom: none;
 }
 .task-row .remove {
-    display: none;
+    display: inline;
     color: red;
-    transition: .7;
+    transition: all ease-in .1s;
     cursor: pointer;
+	font-size: 20px;
 }
 .task-row:hover .remove {
-    display: inline;    
+    display: none;    
 }
 
 .task-row.completed {    
@@ -40,6 +41,10 @@
 }
 .task-row.completed label {
     text-decoration: line-through;
+}
+
+.task-row .checkbox-material {
+	padding-right: 15px;
 }
 
 #newTask {
@@ -68,6 +73,12 @@
     background-color: #000;
     opacity: 0.5;
     z-index: 3000;
+}
+
+.checkbox label, 
+.radio label, 
+label {
+    color: inherit;
 }
 
 #login,
