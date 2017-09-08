@@ -16,7 +16,9 @@
             //var element = isAuthorized ? authElement : anonElement;
 
         	//$(".change-nav").html(element);
-	        var _url = isAuthorized ? '/views/navbar/auth.navbar.html' : '/views/navbar/anon.navbar.html';
+            var _url = isAuthorized
+				? config.rootFolderName + '/views/navbar/auth.navbar.html'
+				: config.rootFolderName + '/views/navbar/anon.navbar.html';
 	        $.ajax({
 	        	url: _url,
 	        	type: 'GET',

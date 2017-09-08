@@ -26,14 +26,14 @@
      border-bottom: none;
 }
 .task-row .remove {
-    display: inline;
+    display: none;
     color: red;
     transition: all ease-in .1s;
     cursor: pointer;
 	font-size: 20px;
 }
 .task-row:hover .remove {
-    display: none;    
+    display: inline;    
 }
 
 .task-row.completed {    

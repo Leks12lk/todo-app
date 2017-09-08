@@ -7,7 +7,7 @@
 						 	var token = data.access_token;
 						 	var userName = data.userName;
 
-						 	if (token && token.trim() != '') {
+						 	if (token && token.trim() !== '') {
 						 		localStorage.setItem('token', token);
 						 		localStorage.setItem('userName', userName);
 
