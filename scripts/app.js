@@ -10,12 +10,13 @@ config.registerUrl = 'http://learn-todo.gear.host/api/account/register';
 config.tokenUrl = 'http://learn-todo.gear.host/token';
 config.logoutUrl = 'http://learn-todo.gear.host/api/account/logout';
 config.isAuthorized = false;
+config.rootFolderName = 'todo-app';
 
 var routeProvider = (function() {
     return {
         getPage: function(pageTitle) {
             $.ajax({
-                url: '/views/'+ pageTitle +'.html',
+                url: '/' + config.rootFolderName + '/views/'+ pageTitle +'.html',
                 type: 'GET',
                 success: function (data) {
                     $('#main').html(data);
